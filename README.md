@@ -5,3 +5,7 @@ con i dati restituiti, stampate una card per ogni personaggio.
 Approfittatene per esplorare la documentazione di un'api:
 https://rickandmortyapi.com/
 
+L'applicativo dovrà cercare i risultati per nome e per stato (alive, dead, unknown) al click sul bottone search.
+Il tasto reset invece riporterà i campi alla loro situazione iniziale.Trovate nella documentazione a questo indirizzo tutte le informazioni necessarie:
+https://rickandmortyapi.com/documentation/#filter-charactersBONUS:
+creare un componente utile per la paginazione dei risultati.

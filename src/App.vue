@@ -49,9 +49,9 @@ export default {
   </header>
   <main>
     <div class="container text-center">
-      <ul class="row row-cols-4">
+      <div class="row row-cols-4">
         <CharacterCard v-for="character in characters" :character="character"></CharacterCard>
-      </ul>
+      </div>
     </div>
 
   </main>

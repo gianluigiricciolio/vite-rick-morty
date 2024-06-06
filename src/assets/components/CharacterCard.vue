@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-  <li class="col">
+  <div class="col">
     <div class="character-card">
       <img :src="character.image" alt="">
       <h4>{{ character.name }}</h4>
@@ -24,7 +24,7 @@ export default {
       <div>{{ character.species }}</div>
     </div>
 
-  </li>
+  </div>
 </template>
 
 <style scoped lang="scss">
