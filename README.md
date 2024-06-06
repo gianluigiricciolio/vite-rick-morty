@@ -4,3 +4,4 @@ https://rickandmortyapi.com/api/character
 con i dati restituiti, stampate una card per ogni personaggio.
 Approfittatene per esplorare la documentazione di un'api:
 https://rickandmortyapi.com/
+

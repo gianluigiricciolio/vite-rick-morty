@@ -2,12 +2,18 @@
 import axios from 'axios';
 
 // import components
+import CharacterCard from './assets/components/CharacterCard.vue';
+
 export default {
   data() {
     return {
       url: 'https://rickandmortyapi.com/api/character',
-      characters: [],
+      characters: []
     }
+  },
+
+  components: {
+    CharacterCard
   },
 
   methods: {
@@ -32,28 +38,27 @@ export default {
 </script>
 
 <template>
-  <div class="container text-center">
+  <div class="container-md text-center">
     <h1>Rick and Morty characters</h1>
-    <ul>
-      <li v-for="character in characters">
-        <img :src="character.image" alt="">
-        <h3>{{ character.name }}</h3>
-      </li>
+    <ul class="row row-cols-4">
+      <CharacterCard v-for="character in characters" :character="character"></CharacterCard>
     </ul>
 
   </div>
 </template>
 
-<style scoped>
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+<style scoped lang="scss">
+.character-card {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 img {
-  max-width: 200px;
   border-radius: 50%;
-  border: 10px solid white;
+  max-width: 100%;
+}
+
+h1 {
+  margin: 40px 0;
 }
 </style>
