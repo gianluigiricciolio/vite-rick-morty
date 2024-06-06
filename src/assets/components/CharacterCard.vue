@@ -20,6 +20,8 @@ export default {
     <div class="character-card">
       <img :src="character.image" alt="">
       <h4>{{ character.name }}</h4>
+      <div>{{ character.status }}</div>
+      <div>{{ character.species }}</div>
     </div>
 
   </li>

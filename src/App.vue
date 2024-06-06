@@ -49,7 +49,6 @@ export default {
 
 <style scoped lang="scss">
 .character-card {
-  margin-bottom: 20px;
   text-align: center;
 }
 
