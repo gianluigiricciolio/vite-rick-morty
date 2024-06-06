@@ -3,6 +3,7 @@ import axios from 'axios';
 
 // import components
 import CharacterCard from './assets/components/CharacterCard.vue';
+import SearchBar from './assets/components/SearchBar.vue';
 
 export default {
   data() {
@@ -13,7 +14,8 @@ export default {
   },
 
   components: {
-    CharacterCard
+    CharacterCard,
+    SearchBar,
   },
 
   methods: {
@@ -38,13 +40,21 @@ export default {
 </script>
 
 <template>
-  <div class="container-md text-center">
-    <h1>Rick and Morty characters</h1>
-    <ul class="row row-cols-4">
-      <CharacterCard v-for="character in characters" :character="character"></CharacterCard>
-    </ul>
+  <header>
+    <div class="container text-center">
+      <h1 class="my-5">Rick and Morty characters</h1>
+      <SearchBar></SearchBar>
+    </div>
 
-  </div>
+  </header>
+  <main>
+    <div class="container text-center">
+      <ul class="row row-cols-4">
+        <CharacterCard v-for="character in characters" :character="character"></CharacterCard>
+      </ul>
+    </div>
+
+  </main>
 </template>
 
 <style scoped lang="scss">
@@ -55,9 +65,5 @@ export default {
 img {
   border-radius: 50%;
   max-width: 100%;
-}
-
-h1 {
-  margin: 40px 0;
 }
 </style>
