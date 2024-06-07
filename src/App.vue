@@ -43,7 +43,7 @@ export default {
   <header>
     <div class="container text-center">
       <h1 class="my-5">Rick and Morty characters</h1>
-      <SearchBar></SearchBar>
+      <SearchBar @reset="handleReset" @search="handleSearch"></SearchBar>
     </div>
 
   </header>
