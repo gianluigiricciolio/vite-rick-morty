@@ -5,6 +5,7 @@ import { store } from './store';
 // import components
 import CharacterCard from './assets/components/CharacterCard.vue';
 import SearchBar from './assets/components/SearchBar.vue';
+import Pagination from './assets/components/Pagination.vue';
 
 export default {
   data() {
@@ -16,6 +17,7 @@ export default {
   components: {
     CharacterCard,
     SearchBar,
+    Pagination
   },
 
   methods: {
@@ -23,17 +25,19 @@ export default {
       const params = {
         name: this.store.userInput,
         status: this.store.selectedStatus,
+        page: this.store.page,
       }
 
       axios
         .get(this.store.apiUrl, { params })
         .then((response) => {
+          this.store.totalPages = response.data.info.pages;
           this.store.characters = response.data.results;
           console.log((this.store.characters));
         })
         .catch(error => {
           this.store.characters = [];
-          console.log('404: Resource not found');
+          console.log(error);
         })
     }
   },
@@ -56,6 +60,7 @@ export default {
 
   </header>
   <main>
+    <Pagination @search="apiCall"></Pagination>
     <div class="container text-center">
       <div v-if="store.characters.length != 0" class="row row-cols-4">
         <CharacterCard v-for="character in store.characters" :character="character"></CharacterCard>

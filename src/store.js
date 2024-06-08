@@ -5,5 +5,7 @@ export const store = reactive({
     characters: [],
     userInput: '',
     selectedStatus: '',
+    page: 1,
+    totalPages: 
 });
 
