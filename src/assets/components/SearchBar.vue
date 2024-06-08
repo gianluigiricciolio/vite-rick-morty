@@ -1,25 +1,26 @@
 <script>
 
+import { store } from '../../store';
 // import components
 
 export default {
     name: 'SearchBar',
     data() {
         return {
-            userInput: '',
-            selectedStatus: '',
+            store,
         }
     },
 
     methods: {
         search() {
-            this.$emit('search', { text: this.userInput, status: this.selectedStatus })
+            this.$emit('refresh')
         },
 
         resetValues() {
-            this.$emit('reset');
-            this.userInput = '';
-            this.selectedStatus = ''
+            this.store.userInput = '';
+            this.store.selectedStatus = '';
+            this.$emit('refresh');
+
         }
     }
 }
@@ -30,8 +31,8 @@ export default {
 
 <template>
     <div>
-        <input class="mb-5" type="text" v-model="userInput">
-        <select name="" id="" v-model="selectedStatus">
+        <input @keyup.enter="search" class="mb-5" type="text" v-model="store.userInput">
+        <select name="" id="" v-model="store.selectedStatus">
             <option value="" selected disabled hidden>Choose Status</option>
             <option value="alive">Alive</option>
             <option value="dead">Dead</option>

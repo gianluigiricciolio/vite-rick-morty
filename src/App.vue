@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { store } from './store';
 
 // import components
 import CharacterCard from './assets/components/CharacterCard.vue';
@@ -8,8 +9,7 @@ import SearchBar from './assets/components/SearchBar.vue';
 export default {
   data() {
     return {
-      url: 'https://rickandmortyapi.com/api/character',
-      characters: []
+      store,
     }
   },
 
@@ -20,13 +20,21 @@ export default {
 
   methods: {
     apiCall() {
-      axios
-        .get(this.url)
-        .then((response) => {
-          this.characters = response.data.results;
-          console.log(JSON.parse(JSON.stringify(this.characters)));
-        })
+      const params = {
+        name: this.store.userInput,
+        status: this.store.selectedStatus,
+      }
 
+      axios
+        .get(this.store.apiUrl, { params })
+        .then((response) => {
+          this.store.characters = response.data.results;
+          console.log((this.store.characters));
+        })
+        .catch(error => {
+          this.store.characters = [];
+          console.log('404: Resource not found');
+        })
     }
   },
 
@@ -43,15 +51,16 @@ export default {
   <header>
     <div class="container text-center">
       <h1 class="my-5">Rick and Morty characters</h1>
-      <SearchBar @reset="handleReset" @search="handleSearch"></SearchBar>
+      <SearchBar @refresh="apiCall"></SearchBar>
     </div>
 
   </header>
   <main>
     <div class="container text-center">
-      <div class="row row-cols-4">
-        <CharacterCard v-for="character in characters" :character="character"></CharacterCard>
+      <div v-if="store.characters.length != 0" class="row row-cols-4">
+        <CharacterCard v-for="character in store.characters" :character="character"></CharacterCard>
       </div>
+      <div v-else class="not-found">Nessun risultato trovato</div>
     </div>
 
   </main>
