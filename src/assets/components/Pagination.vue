@@ -8,6 +8,10 @@ export default {
         }
     },
 
+    emits: [
+        'search'
+    ],
+
     methods: {
         prev() {
             if (this.store.page != 1) {

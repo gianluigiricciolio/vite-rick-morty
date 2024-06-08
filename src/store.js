@@ -6,6 +6,5 @@ export const store = reactive({
     userInput: '',
     selectedStatus: '',
     page: 1,
-    totalPages: 
+    totalPages: null
 });
-

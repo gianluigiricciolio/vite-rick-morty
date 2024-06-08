@@ -31,6 +31,7 @@ export default {
       axios
         .get(this.store.apiUrl, { params })
         .then((response) => {
+          console.log(response.data);
           this.store.totalPages = response.data.info.pages;
           this.store.characters = response.data.results;
           console.log((this.store.characters));
@@ -60,14 +61,14 @@ export default {
 
   </header>
   <main>
-    <Pagination @search="apiCall"></Pagination>
+    <Pagination class="d-flex justify-content-center" @search="apiCall"></Pagination>
     <div class="container text-center">
       <div v-if="store.characters.length != 0" class="row row-cols-4">
         <CharacterCard v-for="character in store.characters" :character="character"></CharacterCard>
       </div>
       <div v-else class="not-found">Nessun risultato trovato</div>
     </div>
-
+    <Pagination class="d-flex justify-content-center" @search="apiCall"></Pagination>
   </main>
 </template>
 

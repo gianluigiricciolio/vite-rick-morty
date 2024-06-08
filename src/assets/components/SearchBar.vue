@@ -11,16 +11,21 @@ export default {
         }
     },
 
+    emits: [
+        'refresh'
+    ],
+
     methods: {
         search() {
-            this.$emit('refresh')
+            this.store.page = 1;
+            this.$emit('refresh');
         },
 
         resetValues() {
+            this.store.page = 1;
             this.store.userInput = '';
             this.store.selectedStatus = '';
             this.$emit('refresh');
-
         }
     }
 }
